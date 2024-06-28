@@ -1,7 +1,6 @@
 const fs = require("fs");
 const cheerio = require("cheerio");
 const xlsx = require("xlsx");
-const { default: axios } = require("axios");
 
 const getData = async () => {
   const response = await fetch(
@@ -65,13 +64,10 @@ const getData = async () => {
   });
 
   fs.writeFileSync("jobs.json", JSON.stringify(jobs));
-  const xlsx = require("xlsx");
   const workbook = xlsx.utils.book_new();
   const sheetdata = xlsx.utils.json_to_sheet(jobs);
   xlsx.utils.book_append_sheet(workbook, sheetdata, "jobs");
   xlsx.writeFile(workbook, "jobs.xlsx");
-
-  // console.log(titlesArray);
 };
 
 getData();
