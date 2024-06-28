@@ -14,8 +14,6 @@ const getData = async () => {
   );
 
   const data = await response.text();
-  fs.writeFileSync("./index.html", data);
-
   const $ = cheerio.load(data);
 
   const titles = $(".job-internship-name");
